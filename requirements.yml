@@ -2,3 +2,4 @@
 - src: geerlingguy.security
 - src: nvidia.nvidia_driver
 - src: weareinteractive.apt
+- src: devinbarry.anaconda

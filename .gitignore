@@ -7,6 +7,8 @@ config.yml
 roles/geerlingguy.*
 roles/nvidia.nvidia_driver
 roles/weareinteractive.apt
+roles/devinbarry.anaconda
+roles/evandam.conda
 
 # Inventory contains secrets and should not be in source control
 inventory

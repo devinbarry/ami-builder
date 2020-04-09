@@ -1,0 +1,44 @@
+---
+- name: "Provision Nvidia CPU AMI"
+  hosts: default
+  become: true
+
+  vars_files:
+    - vars/nvidia-base.yml
+    - vars/cpu-worker.yml
+
+  pre_tasks:
+    - name: Ensure dependencies are installed.
+      apt:
+        name:
+          - sudo
+          - openssh-server
+        state: present
+
+
+  roles:
+    - role: geerlingguy.security
+      tags: ['security']
+
+    # We want to install conda for the ubuntu user
+    - role: devinbarry.anaconda
+      become: false
+      tags: ['conda']
+
+
+  tasks:
+    - include_role:
+        name: weareinteractive.apt
+      tags: ['apt']
+
+    - name: Reboot machine after running apt updates
+      reboot:
+        reboot_timeout: 120
+      tags: ['apt']
+
+    - import_tasks: tasks/setup-conda-env.yml
+      become: false
+      tags: ['conda']
+
+    - import_tasks: tasks/create-directories.yml
+      tags: ['directory']

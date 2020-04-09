@@ -1,0 +1,21 @@
+---
+- name: Create git directory
+  file:
+    path: /home/ubuntu/git
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+
+- name: Create ray_logs directory
+  file:
+    path: /home/ubuntu/ray_logs
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+
+- name: Create ray_results directory
+  file:
+    path: /home/ubuntu/ray_results
+    state: directory
+    owner: ubuntu
+    group: ubuntu

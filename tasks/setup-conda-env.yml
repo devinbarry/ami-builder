@@ -1,0 +1,21 @@
+---
+- name: Don't automatically active base dir
+  shell: export PATH=~/anaconda3/bin:$PATH && conda config --set auto_activate_base false
+  args:
+    executable: /bin/bash
+
+- name: Update to latest version of conda
+  shell: export PATH=~/anaconda3/bin:$PATH && conda update -y -n base -c defaults conda
+  args:
+    executable: /bin/bash
+
+- name: Check if training env exists.
+  stat:
+    path: ~/anaconda3/envs/training/bin/python
+  register: training_env
+
+- name: Create conda training env
+  shell: export PATH=~/anaconda3/bin:$PATH && conda create -y -n training python=3.7
+  args:
+    executable: /bin/bash
+  when: not training_env.stat.exists

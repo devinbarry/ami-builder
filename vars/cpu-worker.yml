@@ -1,0 +1,22 @@
+---
+# Anaconda Setup
+anaconda_mirror: https://repo.continuum.io/archive
+anaconda_python_ver: 3
+anaconda_ver: '2020.02'
+anaconda_checksums:
+  Anaconda3-2020.02-Linux-x86_64.sh: sha256:2b9f088b2022edb474915d9f69a803d6449d5fdb4c303041f60ac4aefcc208bb
+
+anaconda_timeout_seconds: 60
+
+# add the anaconda python onto the front of your path.
+anaconda_make_sys_default: False
+anaconda_install_dir: '~/anaconda3'
+conda_bin_path: 'condabin/conda'
+anaconda_pkg_update: False
+
+
+# Apt
+apt_unattended_upgrades_automatic_reboot: true
+apt_upgrade: full
+apt_autoremove: yes
+apt_autoclean: yes
